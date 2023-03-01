@@ -1,6 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
+#ifndef arvore
+#define arvore
 //#include "iostream"
 
 //using namespace std;
@@ -46,3 +49,4 @@ int main() {
     imprimirArvore(raiz);
 }
 
+#endif
