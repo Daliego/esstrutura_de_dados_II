@@ -2,10 +2,11 @@
 
 int it_has(NoArv* arvore, char x) {
     bool is_here = false;
-    if (!is_null(arvore)) {
+    if (is_null(arvore)) {
+        return 0;
+    } else {
         if (arvore->info == x) {
-            is_here = true;
-            return is_here;
+            return 1;
         }
         it_has(arvore->esquerda, x);
         it_has(arvore->direita, x);
