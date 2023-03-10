@@ -1,7 +1,6 @@
 #include "arvore.hpp"
 
 int it_has(NoArv* arvore, char x) {
-    bool is_here = false;
     if (is_null(arvore)) {
         return 0;
     } else {
