@@ -33,9 +33,18 @@ int main() {
         'c', criarArvore('d', NULL, NULL), NULL
         ));
 
-   /*  NoArv* raiz = criarArvore(
+    NoArv* raiz_c = criarArvore(
         'a', criarArvore('b', NULL, NULL), criarArvore(
-        'c', criarArvore('d', NULL, NULL), NULL)); */
+        'c', criarArvore('d', NULL, NULL), NULL));
+   
+    NoArv* raiz_d = criarArvore(
+        'a', criarArvore('b', NULL, NULL), criarArvore(
+        'c', criarArvore('d', NULL, NULL), NULL));
+    
+    //It get false
+    printf("It's equal (true or false): %i", iguais(raiz_a, raiz_b));
+    printf("\n");
 
-    printf("It's equal: %i", iguais(raiz_a, raiz_b));
+    //It get true
+    printf("It's equal (true or false): %i", iguais(raiz_c, raiz_d));
 }
