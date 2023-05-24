@@ -1,0 +1,47 @@
+void MorrisInPreorderSearchTwo(){
+            TreeNo<T> *p=root, *tmp;
+            while (p!=0){
+                if (p->left==0){
+                    visit(p);
+                    p=p->right;
+                }
+                else{
+                    tmp = p->left;
+                    while (tmp->right!=0 && tmp->right!=p)
+                        tmp=tmp->right;
+                        if (tmp->right==0){
+                            visit(p);                    
+                            tmp->right=p;
+                            p=p->left;
+                        }
+                        else{                    
+                            tmp->right=0;
+                            p=p->right;    
+                        } 
+                }
+            }   
+        }
+Atividade Morris PRE-ORDER (Percurso Pre Order – VLR):
+
+A) O resultado é: 10 -> 5 -> 3 -> 7 -> 20 -> 15 -> 24
+
+B)  1 - Um ponteiro p para é apontado para a raiz da árvore e um ponteiro temporário tmp.
+
+    2 - Então em um loop principal, a cada iteração, verificamos se p é nulo. Se for, significa que chegamos ao 
+    final do percurso em ordem e podemos encerrar o algoritmo.
+
+    3 - Se o nó à esquerda de p for nulo (p->left == 0), então não há mais nós a serem visitados à esquerda de p,
+    e em seguida, mover p para o seu nó à direita (p = p->right).
+
+    4 - Se o nó à esquerda de p não for nulo, precisamos encontrar o nó mais à direita na subárvore esquerda de p armazenada
+    no ponteiro tmp.
+
+    5 - Após isso é inicializado outro loop, que enquanto tmp->right não for nulo e tmp->right não apontar para p, tmp é movido para o seu nó à direita (tmp = tmp->right).
+
+    6 - Se o tmp->right for nulo, visitamos o nó atual (p) e apontamos o ponteiro tmp->right para p para estabelecer 
+    uma conexão temporária entre p e tmp. Depois, movemos p para o seu nó à esquerda (p = p->left).
+
+    7 - Se tmp->right não for nulo então o nó atual (p) já foi visitado, e assim, removemos a 
+    conexão temporária, com tmp->right = 0, e movemos p para o seu nó à direita (p = p->right).
+
+C) O algoritmo foi testado e está funcionando corretamente
