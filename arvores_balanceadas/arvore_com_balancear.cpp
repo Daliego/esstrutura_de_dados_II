@@ -101,29 +101,33 @@ class Arvore {
         cout << endl;
     }
 
-    void inorder_search() {
-        ArvoreNo<T>* p = root;
-        ArvoreNo<T>* prev;
-    
-        if(p != 0) {
-            while(p->left != 0) {
-                p = p->left;
-            };
+    void MorrisInOrderSearch() {
+		    ArvoreNo<T> *p = root, *tmp;
+		    
+		    while(p != 0) {
+		        if(p->left == 0) {
+		            visit(p);
+		            p = p->right;
+		        }
+		        else {
+		            tmp = p->left;
+		        
+		            while(tmp->right != 0 && tmp->right != p){
+		                tmp = tmp->right;
+		            }
 
-            while (p != 0) {
-                cout << p->el << endl;
-
-                prev = p;
-                p = p->right;
-
-                if( p != 0 && prev->the_successor == 0) {
-                    while(p->left != 0) {
+		            if(tmp->right == 0) {
+                        tmp->right = p;
                         p = p->left;
-                    };
-                }
-            };
-        }
-    }
+                    } else {
+		                visit(p);
+		                tmp->right = 0;
+		                p = p->right;
+		            }
+		            
+		        }
+		    }
+		}
 };
 
 int main(){
@@ -165,12 +169,14 @@ int main(){
     // 1.5 No caso da árvore resultante NÃO ESTAR balanceada aplique o algoritmo de
     //    reordenação dos dados para balancear a árvore.
 
-    tree2->balancear(array, 0, 5);
-    tree2->inorder_search();
+    cout << endl;
+    //tree2->balancear(array, 0, 5);
+    tree2->MorrisInOrderSearch();
     //tree2->printTreeFormated(tree2->getRoot());
 
     // 1.6) Compare os resultados em 1.4 e 1.5. As árvores resultantes estão balanceadas? Elas são
     // iguais?
     
-    // As arvores resultantes estão balanceadas e estão diferentes pois a segunda árvore foi impress in-order e a outra não.
+    // As arvores resultantes estão balanceadas e estão iguais a diferença é que a segunda árvore 
+    // foi impressa in-order ao contrárioe da primeira
 }
